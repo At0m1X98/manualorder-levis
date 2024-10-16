@@ -11,8 +11,6 @@ const Item = ({plant, pc9, desc, category, gender, cz, pl, hu, ro, sizes}) => {
   };
 
 
-  const [currentFallbackIndex, setCurrentFallbackIndex] = useState(0);
-
   //handle input
   const handleOrderChange = (index, event, avail) => {
     let newOrder = parseInt(event.target.value, 10);  // Convert input value to an integer
