@@ -6,11 +6,12 @@ import { DataContext } from '../Context/DataContext'
 
 import logo from '../../Assets/logo.png'
 import reset from '../../Assets/reset.svg'
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
   const [navBackground, setNavBackground] = useState(false);
   const [clickCount, setClickCount] = useState(0);
-  const {setIsUploaded, groupedItems, data} = useContext(DataContext);
+  const {setIsUploaded, groupedItems, data, caluculateTotal} = useContext(DataContext);
 
   const handleEasterEgg = () => {
     setClickCount(prevCount  => {
@@ -97,12 +98,34 @@ const Navbar = () => {
       </div>
       <div className='nav-middle'>
         <ul>
-          <li>All</li>
-          <li>Men</li>
-          <li>Women</li>
+          <li>
+            <NavLink 
+              to="/" 
+              className={({ isActive }) => isActive ? "navlink active" : "navlink"} 
+            >
+              All
+            </NavLink>
+          </li>
+          <li>
+            <NavLink 
+              to="/male"  
+              className={({ isActive }) => isActive ? "navlink active" : "navlink"} 
+            >
+              Men
+            </NavLink>
+          </li>
+          <li>
+            <NavLink 
+              to="/female" 
+              className={({ isActive }) => isActive ? "navlink active" : "navlink"}
+            >
+              Women
+            </NavLink>
+          </li>
         </ul>
       </div>
       <div className='nav-right'>
+        <h4 className='total'>Total: {caluculateTotal()}</h4>
         <button onClick={handleDownload}>DOWNLOAD</button>
         <img src={reset} alt='reset' onClick={() => setIsUploaded(false)}/>
       </div>

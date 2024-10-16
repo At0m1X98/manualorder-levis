@@ -10,22 +10,8 @@ const Item = ({plant, pc9, desc, category, gender, cz, pl, hu, ro, sizes}) => {
     return pc9.replace(/-/g, "");
   };
 
-  // Initial image source and fallback images
-  const [imageSrc, setImageSrc] = useState(`https://lsco.scene7.com/is/image/lsco/${formatPC9(pc9)}-front-pdp?fmt=webp&qlt=70&resMode=sharp2&fit=crop,1&op_usm=0.6,0.6,8&wid=880&hei=880`);
-  
-  const fallbackImages = [
-    `https://lsco.scene7.com/is/image/lsco/${formatPC9(pc9)}-dynamic1-pdp-lse?fmt=webp&qlt=70&resMode=sharp2&fit=crop,1&op_usm=0.6,0.6,8&wid=880&hei=880`,
-    `https://lsco.scene7.com/is/image/lsco/${formatPC9(pc9)}-front-pdp-lse?fmt=webp&qlt=70&resMode=sharp2&fit=crop,1&op_usm=0.6,0.6,8&wid=880&hei=880`
-  ];
 
   const [currentFallbackIndex, setCurrentFallbackIndex] = useState(0);
-
-  const handleError = () => {
-    if (currentFallbackIndex < fallbackImages.length) {
-      setImageSrc(fallbackImages[currentFallbackIndex]);
-      setCurrentFallbackIndex(currentFallbackIndex + 1); // Move to the next fallback
-    }
-  };
 
   //handle input
   const handleOrderChange = (index, event, avail) => {
@@ -50,9 +36,8 @@ const Item = ({plant, pc9, desc, category, gender, cz, pl, hu, ro, sizes}) => {
             rel="noopener noreferrer"
           >
             <img 
-              src={imageSrc}
+              src={`https://lsco.scene7.com/is/image/lsco/${formatPC9(pc9)}-front-pdp?fmt=webp&qlt=70&resMode=sharp2&fit=crop,1&op_usm=0.6,0.6,8&wid=880&hei=880`}
               alt={pc9}
-              onError={handleError}
             />
           </a>
         </div>
