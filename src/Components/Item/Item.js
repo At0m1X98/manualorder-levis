@@ -4,7 +4,7 @@ import './Item.css'
 import { DataContext } from '../Context/DataContext'
 
 const Item = ({plant, pc9, desc, category, gender, cz, pl, hu, ro, sizes}) => {
-  const { updateOrder } = useContext(DataContext);
+  const { handleOrderChange } = useContext(DataContext);
 
   const formatPC9 = (pc9) => {
     return pc9.replace(/-/g, "");
@@ -12,16 +12,7 @@ const Item = ({plant, pc9, desc, category, gender, cz, pl, hu, ro, sizes}) => {
 
 
   //handle input
-  const handleOrderChange = (index, event, avail) => {
-    let newOrder = parseInt(event.target.value, 10);  // Convert input value to an integer
-    if (isNaN(newOrder) || newOrder < 0) {
-      newOrder = 0;  // If not a valid number or less than 0, set to 0
-    }
-    if(newOrder > avail) {
-      newOrder = avail;
-    }
-    updateOrder(plant, pc9, index, newOrder);
-  }
+  
 
 
   return (
@@ -62,9 +53,15 @@ const Item = ({plant, pc9, desc, category, gender, cz, pl, hu, ro, sizes}) => {
 
             return(
             <div className='item-right-container'>
-              <p key={index}>{size.width}/{size.length}</p>
+              <div>
+                <p key={index}>{size.width}{size.length !== "-" ? `/${size.length}` : ""}</p>
+              </div>
+              <div>
               <p className='avail'>{size.avail}</p>
-              <input type='number' id="number" value={size.order} onChange={(e) => handleOrderChange(index, e, size.avail)}/>
+              </div>
+              <div>
+              <input type='number' id="number" value={size.order} onChange={(e) => handleOrderChange(index, e, size.avail, plant, pc9)}/>
+              </div>
             </div>)
             }
           )}

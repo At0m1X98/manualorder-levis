@@ -125,7 +125,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className='nav-right'>
-        <h4 className='total'>Total: {caluculateTotal()}</h4>
+        <h4><NavLink className='summary' to="/total">Total: {caluculateTotal()}</NavLink></h4>
         <button onClick={handleDownload}>DOWNLOAD</button>
         <img src={reset} alt='reset' onClick={() => setIsUploaded(false)}/>
       </div>

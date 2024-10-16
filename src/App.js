@@ -6,6 +6,7 @@ import Root from './Pages/Root';
 import Home from './Pages/Home';
 import Male from './Pages/Male';
 import Female from './Pages/Female';
+import Total from './Pages/Total';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route index element={<Home/>}/>
             <Route path='/male' element={<Male/>}/>
             <Route path='/female' element={<Female/>}/>
+            <Route path='/total' element={<Total/>}/>
           </Route>
         </Routes>
       </Router>

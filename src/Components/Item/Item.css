@@ -47,6 +47,12 @@
 .item-right-container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+.item-right-container div {
+    height: auto;
+    width: 33%;
+    text-align: center;
 }
 .item-right-container.bold {
     font-weight: bold;

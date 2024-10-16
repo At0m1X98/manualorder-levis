@@ -80,7 +80,9 @@
     color: rgb(102, 102, 102);
     text-decoration: underline;
 }
-.total {
+.summary {
+    color: var(--text-color);
+    font-size: 1.15rem;
     margin-right: 25px;
     padding-right: 25px;
     text-decoration: underline;

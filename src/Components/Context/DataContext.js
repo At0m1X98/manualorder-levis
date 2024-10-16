@@ -1,6 +1,5 @@
 import React, { createContext, useState } from 'react'
 
-
 export const DataContext = createContext();
 
 export const DataProvider = ({children}) => {
@@ -54,6 +53,18 @@ export const DataProvider = ({children}) => {
         setGroupedItems(grouped);
     }
 
+    //handle input
+    const handleOrderChange = (index, event, avail, plant, pc9) => {
+        let newOrder = parseInt(event.target.value, 10);  // Convert input value to an integer
+        if (isNaN(newOrder) || newOrder < 0) {
+          newOrder = 0;  // If not a valid number or less than 0, set to 0
+        }
+        if(newOrder > avail) {
+          newOrder = avail;
+        }
+        updateOrder(plant, pc9, index, newOrder);
+      }
+
     //updateOrder
     const updateOrder = (plant, pc9, sizeIndex, newOrder) => {
         const updatedGroupedItems = {...groupedItems};//create copy of the item
@@ -85,7 +96,7 @@ export const DataProvider = ({children}) => {
     }
 
     return (
-        <DataContext.Provider value={{ data, setData, isUploaded, setIsUploaded, groupedItems, groupedByPlant, updateOrder, caluculateTotal }}>
+        <DataContext.Provider value={{ data, setData, isUploaded, setIsUploaded, groupedItems, setGroupedItems, groupedByPlant, updateOrder, caluculateTotal, handleOrderChange }}>
             {children}
         </DataContext.Provider>
     )

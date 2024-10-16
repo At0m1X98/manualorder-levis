@@ -16,6 +16,9 @@ const Male = () => {
   return (
     <div className='male'>
       <div className='category'>
+        <div className={selectedCategory === "" ? "cat-active" : "cat"}>
+          <h4 onClick={() => setSelectedCategory('')}>All</h4>
+        </div>
         <div className={selectedCategory === "BOTTOMS" ? "cat-active" : "cat"}>
           <h4 onClick={() => setSelectedCategory('BOTTOMS')}>Bottom</h4>
         </div>
