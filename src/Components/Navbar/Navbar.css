@@ -24,6 +24,13 @@
     height: 100%;
     width: auto;
 }
+.nav-left h4 {
+    text-decoration: underline;
+}
+.dropdown-list {
+    border-radius: 25px;
+    margin-left: 1rem;
+}
 .nav-middle {
     width: 55%;
     display: flex;

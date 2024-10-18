@@ -191,6 +191,7 @@
     height: 100%;
     width: 5%;
     border-left: 1px solid black;
+    cursor: pointer;
 }
 .total-item-del h2 {
     font-size: 1rem;

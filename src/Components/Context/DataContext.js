@@ -5,7 +5,8 @@ export const DataContext = createContext();
 export const DataProvider = ({children}) => {
     const [isUploaded, setIsUploaded] = useState(false);
     const [data, setData] = useState([]);
-    const [groupedItems, setGroupedItems]= useState({});
+    const [groupedItems, setGroupedItems] = useState({});
+    const [currency, setCurrency] = useState("cz")
 
     //function to groupedData by plant and then pc9
     const groupedByPlant = (data) => {
@@ -96,7 +97,7 @@ export const DataProvider = ({children}) => {
     }
 
     return (
-        <DataContext.Provider value={{ data, setData, isUploaded, setIsUploaded, groupedItems, setGroupedItems, groupedByPlant, updateOrder, caluculateTotal, handleOrderChange }}>
+        <DataContext.Provider value={{ data, setData, isUploaded, setIsUploaded, groupedItems, setGroupedItems, groupedByPlant, updateOrder, caluculateTotal, handleOrderChange, setCurrency, currency }}>
             {children}
         </DataContext.Provider>
     )

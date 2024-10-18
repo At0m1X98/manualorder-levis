@@ -4,15 +4,26 @@ import './Item.css'
 import { DataContext } from '../Context/DataContext'
 
 const Item = ({plant, pc9, desc, category, gender, cz, pl, hu, ro, sizes}) => {
-  const { handleOrderChange } = useContext(DataContext);
+  const { handleOrderChange, currency } = useContext(DataContext);
 
   const formatPC9 = (pc9) => {
     return pc9.replace(/-/g, "");
   };
 
 
-  //handle input
-  
+  //handle price
+  const getPrice = () => {
+    switch (currency) {
+      case 'pl':
+        return `${pl} zł`;
+      case 'hu':
+        return `${hu} Ft`;
+      case 'ro':
+        return `${ro} leu`;
+      default:
+        return `${cz} Kč`;
+    }
+  };
 
 
   return (
@@ -38,7 +49,7 @@ const Item = ({plant, pc9, desc, category, gender, cz, pl, hu, ro, sizes}) => {
               <h4>{category}/{gender}</h4>
             </div>
             <div className='container-right'>
-              <p>{cz} Kč</p>
+              <p>{getPrice()}</p>
             </div>
           </div>
         </div>

@@ -11,7 +11,7 @@ import { NavLink } from 'react-router-dom';
 const Navbar = () => {
   const [navBackground, setNavBackground] = useState(false);
   const [clickCount, setClickCount] = useState(0);
-  const {setIsUploaded, groupedItems, data, caluculateTotal} = useContext(DataContext);
+  const {setIsUploaded, groupedItems, data, caluculateTotal, setCurrency, currency} = useContext(DataContext);
 
   const handleEasterEgg = () => {
     setClickCount(prevCount  => {
@@ -91,10 +91,21 @@ const Navbar = () => {
     document.body.removeChild(a);
   }
 
+  const handleCurrency = (e) => {
+    setCurrency(e.target.value);
+  }
+
   return (
     <div className={`navbar ${navBackground ? 'navbar-scrolled' : ''}`}>
       <div className='nav-left'>
         <img src={logo} alt='logo' onClick={handleEasterEgg}/>
+        <h4>Currency:</h4>
+        <select value={currency} className='dropdown-list' onChange={handleCurrency}>
+          <option value="cz">CZ</option>
+          <option value="pl">PL</option>
+          <option value="hu">HU</option>
+          <option value="ro">RO</option>
+        </select>
       </div>
       <div className='nav-middle'>
         <ul>
